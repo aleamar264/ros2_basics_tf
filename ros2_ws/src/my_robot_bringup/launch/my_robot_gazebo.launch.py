@@ -3,6 +3,8 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
 import xacro
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
@@ -22,19 +24,33 @@ def generate_launch_description():
         ]
     )
 
-    joint_state_publisher_gui = Node(
-        package='joint_state_publisher_gui',
-        name='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        output='screen'
-    )
-
     rviz2 = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
         output='screen',
-        arguments=['-d' ,rviz_path]
+        arguments=['-d' , rviz_path]
     )
 
-    return LaunchDescription([robot_state_publisher, joint_state_publisher_gui, rviz2])
+    gazebo_ros = Node(
+        package='gazebo_ros',
+        executable='spawn_entity.py',
+        arguments=[
+            '-topic', 'robot_description',
+            '-entity', 'my_robot'
+        ]
+    )
+
+    gazebo_launch_description = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('gazebo_ros'),
+                'launch',
+                'gazebo.launch.py'
+            )
+        )
+    )
+
+    return LaunchDescription([robot_state_publisher, rviz2,
+                              gazebo_ros,
+                              gazebo_launch_description])

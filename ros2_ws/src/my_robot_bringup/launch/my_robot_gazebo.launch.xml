@@ -11,8 +11,13 @@
             value="$(command 'xacro $(var urdf_path)')"/>
     </node>
 
-    <node pkg="joint_state_publisher_gui" exec="joint_state_publisher_gui" output="screen"/>
     <node pkg="rviz2" exec="rviz2" output="screen"
         args="-d $(var rviz_config_path)" />
+
+   <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py"/>
+
+<node name="gazebo_ros" pkg="gazebo_ros" exec="spawn_entity.py"
+    args="-topic robot_description -entity my_robot"
+     output="screen"/>
 
 </launch>
