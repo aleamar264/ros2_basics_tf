@@ -5,7 +5,7 @@ from launch_ros.actions import Node
 import xacro
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-
+from icecream import ic
 
 def generate_launch_description():
     """Launch my robot node"""
@@ -14,6 +14,9 @@ def generate_launch_description():
     robot_urdf = xacro.process_file(urdf_path)
 
     rviz_path = os.path.join(get_package_share_directory('my_robot_description'),'rviz/urdf_config.rviz')
+    world_directory = os.path.join(get_package_share_directory('my_robot_bringup'), 'world/my_world.world')
+
+    ic(world_directory)
 
     robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -48,7 +51,8 @@ def generate_launch_description():
                 'launch',
                 'gazebo.launch.py'
             )
-        )
+        ),
+        launch_arguments={'world': world_directory}.items(),
     )
 
     return LaunchDescription([robot_state_publisher, rviz2,

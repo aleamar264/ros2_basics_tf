@@ -76,7 +76,7 @@
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <sphere radius="${2*wheel_radius/2.0}"/>
+                <sphere radius="${wheel_radius/2.0}"/>
             </geometry>
             <material name="grey"/>
         </visual>
@@ -86,7 +86,7 @@
                 <sphere radius="${wheel_radius/2.0}"/>
             </geometry>
         </collision>
-        <xacro:sphere_inertia m="0.5" r="${wheel_radius/2.0}"
+        <xacro:sphere_inertia m="0.5" r="${2*wheel_radius/2.0}"
             xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     </link>
 
