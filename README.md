@@ -28,7 +28,7 @@ Need to go to the path of the file to call this command, otherwise, you need to 
 /opt/ros/humble/share/urdf_tutorial/urdf
 ```
 
-![[Pasted image 20230912153209.png|08-macroed.urdf.xacro]]
+![attachments/bot_tf.png](attachments/bot_tf.png)
 
 ## Tf Tree
 
@@ -43,7 +43,8 @@ ros2_lvl2 git:(master) ros2 run tf2_tools view_frames
 ```
 
 This create a PDF file in the same path that you called.
-![[frames_2023-09-12_16.03.09.pdf]]
+
+[PDF with the frames](attachments/frames_2023-09-12_16.03.09.pdf)
 
 The problem that solve the TF is:
 
@@ -56,30 +57,15 @@ The problem that solve the TF is:
 
 We can use the tool mentioned before or use the extension of **_ROS_** that VSCode already have.
 To use the extension of VSCode, we need to press `ctrl + shift + p` and search for
-![[Pasted image 20230913123946.png]]
+![Ros tools](attachments/urdf_tool.png)
 
 With this, we open a side windows with the preview of the **_URDF_**
 
-![[Pasted image 20230913123759.png]]
+![Preview ROS tool](attachments/urdf_tool_preview.png)
 
 Before we move the link to the position that we want, we also move first the joint, when we have the joint with the desired position, we can move now the visual (link)
 
-<div class="rich-link-card-container"><a class="rich-link-card" href="http://wiki.ros.org/urdf/XML" target="_blank">
-	<div class="rich-link-image-container">
-		<div class="rich-link-image" style="background-image: url('http://wiki.ros.org/custom/favicon.ico')">
-	</div>
-	</div>
-	<div class="rich-link-card-text">
-		<h1 class="rich-link-card-title">urdf/XML - ROS Wiki</h1>
-		<p class="rich-link-card-description">
-
-    	</p>
-    	<p class="rich-link-href">
-    	http://wiki.ros.org/urdf/XML
-    	</p>
-    </div>
-
-</a></div>
+http://wiki.ros.org/urdf/XML
 
 The revolute and prismatic joints have the properties of limit
 
@@ -270,22 +256,7 @@ For the simulation on Gazebo, we need to add to the URDF some physical propertie
 
 For simple objects we can use the section of _List of 3D inertia tensors_ from wikipedia
 
-<div class="rich-link-card-container"><a class="rich-link-card" href="https://en.wikipedia.org/wiki/List_of_moments_of_inertia" target="_blank">
-	<div class="rich-link-image-container">
-		<div class="rich-link-image" style="background-image: url('https://en.wikipedia.org/static/apple-touch/wikipedia.png')">
-	</div>
-	</div>
-	<div class="rich-link-card-text">
-		<h1 class="rich-link-card-title">List of moments of inertia - Wikipedia</h1>
-		<p class="rich-link-card-description">
-
-    	</p>
-    	<p class="rich-link-href">
-    	https://en.wikipedia.org/wiki/List_of_moments_of_inertia
-    	</p>
-    </div>
-
-</a></div>
+https://en.wikipedia.org/wiki/List_of_moments_of_inertia
 
 For more complex objects, the CAD with we model the object should give us the inertia.
 
@@ -432,23 +403,9 @@ Normally the gazebo don't load the colors of the materials (like rviz), so, to d
 
 To looking for more plugins
 
-<div class="rich-link-card-container"><a class="rich-link-card" href="https://github.com/ros-simulation/gazebo_ros_pkgs" target="_blank">
-	<div class="rich-link-image-container">
-		<div class="rich-link-image" style="background-image: url('https://github.com/fluidicon.png')">
-	</div>
-	</div>
-	<div class="rich-link-card-text">
-		<h1 class="rich-link-card-title">GitHub - ros-simulation/gazebo_ros_pkgs: Wrappers, tools and additional API's for using ROS with Gazebo</h1>
-		<p class="rich-link-card-description">
-		Wrappers, tools and additional API's for using ROS with Gazebo - GitHub - ros-simulation/gazebo_ros_pkgs: Wrappers, tools and additional API's for using ROS with Gazebo
-		</p>
-		<p class="rich-link-href">
-		https://github.com/ros-simulation/gazebo_ros_pkgs
-		</p>
-	</div>
-</a></div>
+https://github.com/ros-simulation/gazebo_ros_pkgs
 
-![[Pasted image 20231025144812.png]]
+![](attachments/nodes.png)
 
 ### Launch Robot + World
 
@@ -544,3 +501,5 @@ world_directory = os.path.join(get_package_share_directory('my_robot_bringup'), 
 
 </robot>
 ```
+
+[Complete TF](attachments/complete_robot.pdf)
