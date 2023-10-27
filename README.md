@@ -1,5 +1,4 @@
-Note: For better understand of the README.md copy this to a obsidian file.
-Extension Rich link
+Note: Information recopiled from Udemy course https://www.udemy.com/course/ros2-tf-urdf-rviz-gazebo/
 
 Steps:
 
